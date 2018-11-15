@@ -11,9 +11,8 @@ class Result extends Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.props.houses.map(house => <li key={house}>{house}</li>)}
-        </ul>
+          {this.props.houses.map(house => <h5 key={house}>{house}</h5>)}
+        <br />
         <Message message={this.props.selectedHouse} />
       </div>
     )

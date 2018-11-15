@@ -11,6 +11,7 @@ const styles = {
     background:`url(${background})`,
     height: '100vh',
     color: 'white',
+    padding: '50px',
   }
 }
 const houses = [
