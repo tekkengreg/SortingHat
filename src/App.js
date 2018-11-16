@@ -1,30 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Result from './containers/Result';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import background from './assets/bg.jpg';
+import reducers from './reducers';
 
-import background from './assets/bg.jpg'
 const styles = {
   app:{
     background:`url(${background})`,
+    backgroundSize: 'contain',
     height: '100vh',
     color: 'white',
     padding: '50px',
   }
 }
-const houses = [
-  'Serpentard',
-  'Griffondor',
-  'Serdaigle',
-  'Pouffsoufle',
-];
-const reducer = (state, action) => ({
-  houses,
-  selectedHouse: houses[Math.floor(Math.random() * 4)]
-})
-const store = createStore(reducer);
+
+const store = createStore(reducers);
 
 class App extends Component {
   render() {
