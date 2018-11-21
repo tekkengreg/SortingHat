@@ -8,3 +8,7 @@
 
 `git checkout fullversion`
 
+## Very Full version with async request
+
+`git checkout veryfullversion`
+
