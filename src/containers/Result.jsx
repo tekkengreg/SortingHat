@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Message from '../components/Message';
-import {updateRandomHouse, updateSpecificHouse} from '../actions';
+import {
+  updateRandomHouse,
+  updateSpecificHouse,
+  fetchHouses,
+} from '../actions';
 
 class Result extends Component {
   constructor(props) {
     super(props)
     this.count = 0;
+    this.props.updateHouseList();
     setInterval(() => {
       this.count++;
-      this.props.updateSpecificCall(this.count%4)
+      this.props.updateRandomCall()
     }, 1000)
   }
 
@@ -26,9 +31,11 @@ class Result extends Component {
 
 const mapStateToProps = store => store;
 
-const mapDispatchToProps = dispatch => ({ 
-  updateRandomCall: () => dispatch(updateRandomHouse()), 
-  updateSpecificCall: (id) => dispatch(updateSpecificHouse(id)), 
+const mapDispatchToProps = dispatch => ({
+  updateRandomCall: () => dispatch(updateRandomHouse()),
+  updateSpecificCall: (id) => dispatch(updateSpecificHouse(id)),
+  updateHouseList: () => dispatch(fetchHouses()),
 })
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Result)

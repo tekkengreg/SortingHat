@@ -1,16 +1,15 @@
-const housesList = [
-  'Serpentard',
-  'Griffondor',
-  'Serdaigle',
-  'Pouffsoufle',
-]
 
-export default function (state = { housesList, selectedHouse: "Griffondor" }, action) {
+export default function (state = { housesList: [], selectedHouse: "" }, action) {
   let selectedHouse;
   switch (action.type) {
 
+    case 'UPDATE_HOUSE_LIST':
+      const houses = action.houses;
+      return { ...state, housesList: houses }
+
     case 'SELECT_RANDOM':
-      selectedHouse = housesList[Math.floor(Math.random() * 4)]
+      const { housesList } = state;
+      selectedHouse = housesList[Math.floor(Math.random() * housesList.length)]
       return { ...state, selectedHouse }
 
     case 'SELECT_SPECIFIC':
@@ -19,6 +18,6 @@ export default function (state = { housesList, selectedHouse: "Griffondor" }, ac
 
     default:
       return state
-      
+
   }
 }

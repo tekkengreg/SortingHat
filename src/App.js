@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Result from './containers/Result';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import background from './assets/bg.jpg';
 import reducers from './reducers';
 
 const styles = {
-  app:{
-    background:`url(${background})`,
+  app: {
+    background: `url(${background})`,
     backgroundSize: 'contain',
     height: '100vh',
     color: 'white',
@@ -16,7 +17,7 @@ const styles = {
   }
 }
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 
 class App extends Component {
   render() {
@@ -28,7 +29,6 @@ class App extends Component {
           </div>
         </div>
       </Provider>
-
     );
   }
 }
